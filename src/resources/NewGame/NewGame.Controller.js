@@ -9,6 +9,11 @@ const getRandomWord = () => {
 } 
 
 export const startGame = (req, res) => {
-
-    res.status(200).json({ data: req.NewGame })
+    let guessWord = getRandomWord()
+    let wordProgress
+    for (let i = 0; i < guessWord.length; i++) {
+        wordProgress = "_ "
+    }
+    res.send("¡Adivina la palabra!")
+    res.send(wordProgress)
 }

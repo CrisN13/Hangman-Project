@@ -1,6 +1,5 @@
 import express from 'express'
-import { newGame, guessLetter, getSolution, getHint } from './utils/auth'
-
+import newGame from './resources/NewGame/NewGame.Router'
 export const app = express()
 
 app.disable('x-powered-by')

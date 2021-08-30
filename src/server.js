@@ -1,14 +1,18 @@
 import express from 'express'
+import { newGame, guessLetter, getSolution, getHint } from './utils/auth'
 
 export const app = express()
 
 app.disable('x-powered-by')
 
-app.post('/hangman')
+app.post('/hangman', newGame)
+app.put('/hangman', guessLetter)
+app.get('/hangman', getSolution)
+app.get('hangman/hint', getHint)
 
 export const start = async () => {
     try {
-        await app.listen(3000)
+        app.listen(3000)
         console.log('Connected to port 3000!')
     } catch (err) {
         console.error(err)

@@ -4,12 +4,12 @@ export const app = express()
 
 app.disable('x-powered-by')
 
+app.post('/hangman')
+
 export const start = async () => {
     try {
-        await connect()
-        app.listen(config.port, () => {
-            console.log('REST API on http://localhost:${config.port}')
-        })
+        await app.listen(3000)
+        console.log('Connected to port 3000!')
     } catch (err) {
         console.error(err)
     }

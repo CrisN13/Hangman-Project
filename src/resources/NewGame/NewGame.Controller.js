@@ -1,4 +1,4 @@
-import { NewGame } from "./NewGame.Model"
+const NewGame = require("./NewGame.Model")
 
 const fs = require('fs');
 
@@ -8,11 +8,11 @@ const getRandomWord = () => {
     return wordList[numRandom]
 } 
 
-export const startGame = (req, res) => {
+exports.startGame = (req, res) => {
     let guessWord = getRandomWord()
     let wordProgress
     for (let i = 0; i < guessWord.length; i++) {
-        wordProgress = "_ "
+        wordProgress += "_ "
     }
     res.send("¡Adivina la palabra!")
     res.send(wordProgress)

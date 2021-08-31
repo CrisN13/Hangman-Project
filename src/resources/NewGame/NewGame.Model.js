@@ -1,10 +1,10 @@
-import mongoose from 'mongoose'
-import bcrypt from 'bcrypt'
+// const mongoose = require('mongoose')
+// import bcrypt from 'bcrypt'
 
-const newGameSchema = new mongoose.Schema(
-    {
-        guessWord = String
-    }
-)
+// const newGameSchema = new mongoose.Schema(
+//     {
+//         guessWord = String
+//     }
+// )
 
-export const NewGame = mongoose.model('newGame', newGameSchema)
+// export const NewGame = mongoose.model('newGame', newGameSchema)

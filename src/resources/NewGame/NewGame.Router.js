@@ -1,8 +1,8 @@
-import { Router } from 'express'
-import { startGame } from './NewGame.Controller'
+const Router =  require('express')
+const startGame = require('./NewGame.Controller')
 
 const router = Router()
 
 router.post('/', startGame)
 
-export default router
+exports.router

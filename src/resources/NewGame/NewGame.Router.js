@@ -1,8 +1,8 @@
-const Router =  require('express')
-const startGame = require('./NewGame.Controller')
+const express =  require('express')
+const {startGame} = require('./NewGame.Controller')
 
-const router = Router()
+const newGame = express.Router()
 
-router.post('/', startGame)
+newGame.post('/', startGame)
 
-exports.router
+exports.newGame = newGame

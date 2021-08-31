@@ -12,7 +12,6 @@ cuaderno
 camisa
 gancho
 pizarra
-tacho
 tetera
 lentes
 auriculares
@@ -48,3 +47,4 @@ jirafa
 mono
 caballo
 vaca
+escuela

@@ -1,4 +1,4 @@
-//Impotando módulos a utilizar
+//Importando módulos a utilizar
 const fs = require('fs');
 
 //Método que obtiene una palabra al azar de la lista de palabras del archivo words.txt

@@ -1,6 +1,6 @@
 //Importando módulos a utilizar
 const express =  require('express')
-const {gHint} = require('./GetHint.Controller')
+const { gHint } = require('./GetHint.Controller')
 
 //Creando un nuevo router
 const getHint = express.Router()

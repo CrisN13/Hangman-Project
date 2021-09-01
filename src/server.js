@@ -1,13 +1,13 @@
 const express = require('express')
-const {newGame}= require('./resources/NewGame/NewGame.Router')
+const { newGame }= require('./resources/NewGame/NewGame.Router')
 const app = express()
 
 app.disable('x-powered-by')
 
 app.use('/hangman', newGame)
-// app.put('/hangman', guessLetter)
-// app.get('/hangman', getSolution)
-// app.get('hangman/hint', getHint)
+app.use('/hangman', guessLetter)
+// app.use('/hangman', getSolution)
+// app.use('hangman/hint', getHint)
 
 
 exports.start = () => {

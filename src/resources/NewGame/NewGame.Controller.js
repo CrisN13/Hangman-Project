@@ -9,16 +9,23 @@ const getRandomWord = () => {
     return wordList[numRandom]
 } 
 
+//Método que crea el número de espacios por cada letra de la palabra elegida al azar
+const hangmanWord = () => {
+    let wProgress = ""
+    for (let i = 1; i < word.length; i++) {
+        wProgress += "_ "
+    }
+    return wordProgress
+}
+
 let word = getRandomWord()
+let wordProgress = hangmanWord()
 
 //Método encargado de iniciar un nuevo juego
 exports.startGame = (req, res) => {
-    let wordProgress = ""
-    for (let i = 1; i < word.length; i++) {
-        wordProgress += "_ "
-    }
     let imprimir = "¡Adivina la palabra!"
     res.send("<p>" + imprimir + "<br>" + wordProgress + word + "</p>")
 }
 
 exports.word
+exports.wordProgress

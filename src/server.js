@@ -1,13 +1,14 @@
 //Importando módulos a utilizar
 const express = require('express')
 const { newGame }= require('./resources/NewGame/NewGame.Router')
+const { guessLetter } = require('./resources/GuessLetter/GuessLetter.Router')
 const app = express()
 
 app.disable('x-powered-by')
 
 //Manejando rutas de la API
 app.use('/hangman', newGame)
-//app.use('/hangman', guessLetter)
+app.use('/hangman', guessLetter)
 // app.use('/hangman', getSolution)
 // app.use('/hangman/hint', getHint)
 

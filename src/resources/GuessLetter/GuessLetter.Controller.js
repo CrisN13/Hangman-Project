@@ -1,40 +1,44 @@
-//Importando módulos a utilizar
-const word = require('../NewGame/NewGame.Controller')
-const wordProgress = require('../NewGame/NewGame.Controller')
-const readline = require('readline')
 
-const choseLetters = new Array
-const answer
-let attemps = 6
+const gLetter = (req, res) => {
+    //Importando módulos a utilizar
+    const word = require('../NewGame/NewGame.Controller')
+    const wordProgress = require('../NewGame/NewGame.Controller')
+    const readline = require('readline')
 
-const interfaceData = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-})
+    const choseLetters = new Array
+    //let ans
+    let attemps = 6
 
-interfaceData.question("Ingrese una letra: "), (answer) => {
-    answer = this.answer
-    interfaceData.close()
-}
+    const interfaceData = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    })
 
-const GuessLetter = (req, res) => {
     while (attemps > 0) {
-        if (answer.length === 1 && answer.toLowerCase().charCodeAt(0) >= 97 && answer.toLowerCase().charCodeAt(0) <= 122) {
-            if (answer in cache) {
-                res.status(304).end()
+        interfaceData.question("Ingrese una letra: "), (ans) => {
+            if (ans.length === 1 && ans.toLowerCase().charCodeAt(0) >= 97 && ans.toLowerCase().charCodeAt(0) <= 122) {
+                if (ans in cache) {
+                    res.status(304).end()
+                } else {
+                    for (let i = 0; i < word.length; i++) {
+                        if (wordProgress === word) {
+                            res.send("¡Ganaste!")
+                        }
+                        else if (word[i] === ans.toLowerCase()) {
+                            wordProgress[i + i].replace(ans)
+                            console.log(wordProgress)
+                        }
+                    }    
+                    choseLetters.push(ans)
+                    attemps--    
+                }
             } else {
-                for (let i = 0; i < word.length; i++) {
-                    if (word[i] === answer.toLowerCase()) {
-                        wordProgress[i + i].replace(answer)
-                    }
-                }    
-            }
-            choseLetters.push(answer)
-            attemps--
-        } else {
-            console.log("El valor ingresado no es válido. Inténtelo nuevamente.")
+                console.log("El valor ingresado no es válido. Inténtelo nuevamente.")
+            }    
         }    
-    }
+            interfaceData.close()
+    }    
+    res.send("Juego terminado. La respuesta correcta es: " + word)
 }
 
-exports.GuessLetter = GuessLetter
+exports.gLetter = gLetter

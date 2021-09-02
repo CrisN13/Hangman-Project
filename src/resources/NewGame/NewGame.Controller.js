@@ -15,7 +15,7 @@ const hangmanWord = () => {
     for (let i = 1; i < word.length; i++) {
         wProgress += "_ "
     }
-    return wordProgress
+    return wProgress
 }
 
 let word = getRandomWord()

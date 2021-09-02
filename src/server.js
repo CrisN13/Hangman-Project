@@ -2,6 +2,9 @@
 const express = require('express')
 const { newGame }= require('./resources/NewGame/NewGame.Router')
 const { guessLetter } = require('./resources/GuessLetter/GuessLetter.Router')
+const { getSolution } = require('./resources/GetSolution/GetSolution.Router')
+const { getHint } = require('./resources/GetHint/GetHint.Router')
+
 const app = express()
 
 app.disable('x-powered-by')

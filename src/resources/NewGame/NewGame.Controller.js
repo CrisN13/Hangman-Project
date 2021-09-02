@@ -1,5 +1,6 @@
 //Importando módulos a utilizar
 const fs = require('fs');
+const { Module } = require('module');
 
 //Método que obtiene una palabra al azar de la lista de palabras del archivo words.txt
 const getRandomWord = () => {
@@ -22,10 +23,10 @@ let word = getRandomWord()
 let wordProgress = hangmanWord()
 
 //Método encargado de iniciar un nuevo juego
-exports.startGame = (req, res) => {
+module.exports.startGame = (req, res) => {
     let imprimir = "¡Adivina la palabra!"
     res.send("<p>" + imprimir + "<br>" + wordProgress + word + "</p>")
 }
 
-exports.word = word
-exports.wordProgress = wordProgress
+module.exports.word
+module.exports.wordProgress

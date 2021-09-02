@@ -9,8 +9,8 @@ app.disable('x-powered-by')
 //Manejando rutas de la API
 app.use('/hangman', newGame)
 app.use('/hangman', guessLetter)
-// app.use('/hangman', getSolution)
-// app.use('/hangman/hint', getHint)
+app.use('/hangman', getSolution)
+app.use('/hangman/hint', getHint)
 
 //Métpdo que crea el servidor
 exports.start = () => {

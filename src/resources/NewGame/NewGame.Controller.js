@@ -28,5 +28,5 @@ module.exports.startGame = (req, res) => {
     res.send("<p>" + imprimir + "<br>" + wordProgress + word + "</p>")
 }
 
-module.exports.word
-module.exports.wordProgress
+module.exports.word = word
+module.exports.wordProgress = wordProgress

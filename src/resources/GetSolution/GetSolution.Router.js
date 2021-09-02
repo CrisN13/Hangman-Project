@@ -6,6 +6,6 @@ const { gSolution } = require('./GetSolution.Controller')
 const getSolution = express.Router()
 
 //Configurando ruta de la API para brindar la solución al culminar el juego
-getSolution.post('/', gSolution)
+getSolution.get('/', gSolution)
 
 exports.getSolution = getSolution

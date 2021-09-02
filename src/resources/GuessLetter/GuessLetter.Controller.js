@@ -1,8 +1,7 @@
 
 const gLetter = (req, res) => {
     //Importando módulos a utilizar
-    const word = require('../NewGame/NewGame.Controller')
-    const wordProgress = require('../NewGame/NewGame.Controller')
+    const { word, wordProgress } = require('../NewGame/NewGame.Controller')
     const readline = require('readline')
 
     const choseLetters = new Array
@@ -16,6 +15,8 @@ const gLetter = (req, res) => {
 
     while (attemps > 0) {
         interfaceData.question("Ingrese una letra: "), (ans) => {
+            console.log(ans)
+            ans = "a"
             if (ans.length === 1 && ans.toLowerCase().charCodeAt(0) >= 97 && ans.toLowerCase().charCodeAt(0) <= 122) {
                 if (ans in cache) {
                     res.status(304).end()

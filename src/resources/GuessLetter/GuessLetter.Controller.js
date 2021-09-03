@@ -1,47 +1,53 @@
+//Importando módulos a utilizar
+let { word, wordProgress } = require('../NewGame/NewGame.Controller')
+const readline = require('readline')
+const bodyparser = require('body-parser')
+
+let wordArr = new Array
+wordArr = word.split("")
+let wordProgressArr = new Array
+
 //Método que captura una letra y evalua si la palabra genera al azar la posee o no
-module.exports.gLetter = (req, res) => {
-    //Importando módulos a utilizar
-    const { word, wordProgress } = require('../NewGame/NewGame.Controller')
-    const readline = require('readline')
-
-    const choseLetters = new Array
-    //let ans
+exports.gLetter = (req, res) => {
+    res.setHeader("Content-Type", "text/html")
+    let choseLetters = new Array
+    choseLetters = []
     let attemps = 6
-
-    //Creando interfaz para capturar la letra
-    const interfaceData = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout
-    })
-
+    
     while (attemps > 0) {
-        //Capturando la letra ingresada por teclado
-        interfaceData.question("Ingrese una letra: "), (ans) => {
-            console.log(ans)
-            ans = "a"
-
+        if (attemps > 0) {
+            let letter = req.body.letter
             //Validando la letra ingresada
-            if (ans.length === 1 && ans.toLowerCase().charCodeAt(0) >= 97 && ans.toLowerCase().charCodeAt(0) <= 122) {
-                if (ans in cache) {
-                    res.status(304).end()
-                } else {
+            if (letter.length === 1 && letter.toLowerCase().charCodeAt(0) >= 97 && letter.toLowerCase().charCodeAt(0) <= 122) {
+                if (choseLetters.includes(letter)) {
+                    res.status(304).send("Status 304: No modificado")
+                } 
+                else {
                     for (let i = 0; i < word.length; i++) {
-                        if (wordProgress === word) {
-                            res.send("¡Ganaste!")
+                        if (wordProgress.replace(" ", "") === word) {
+                            res.send("<b>¡Ganaste!</b>")
+                            res.end()
                         }
-                        else if (word[i] === ans.toLowerCase()) {
-                            wordProgress[i + i].replace(ans)
-                            console.log(wordProgress)
+                        else if (wordArr[i] === letter.toLowerCase()) {
+                            wordProgressArr = wordProgress.split("")
+                            wordProgressArr[i + i] = letter
+                            wordProgress = wordProgressArr.join("")            
+                            res.send("<p>" + wordProgress + "<br>Intentos restantes: " + attemps + "</p>")
+                        }
+                        else {
+                            break
                         }
                     }    
-                    choseLetters.push(ans)
-                    attemps--    
+                    attemps--
+                    choseLetters.push(letter)
                 }
-            } else {
-                console.log("El valor ingresado no es válido. Inténtelo nuevamente.")
-            }    
-        }    
-            interfaceData.close()
-    }    
-    res.send("Juego terminado. La respuesta correcta es: " + word)
+            } 
+            else {
+                res.send("<p>El valor ingresado no es válido. Inténtelo nuevamente.</p>")
+            }        
+        } else {
+            res.send("Juego terminado. La respuesta correcta es: " + word)
+            res.end()          
+        }
+    }  
 }

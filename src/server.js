@@ -1,5 +1,6 @@
 //Importando módulos a utilizar
 const express = require('express')
+const { json, urlencoded } = require('body-parser')
 const { newGame }= require('./resources/NewGame/NewGame.Router')
 const { guessLetter } = require('./resources/GuessLetter/GuessLetter.Router')
 const { getSolution } = require('./resources/GetSolution/GetSolution.Router')
@@ -8,6 +9,10 @@ const { getHint } = require('./resources/GetHint/GetHint.Router')
 const app = express()
 
 app.disable('x-powered-by')
+app.use(urlencoded({
+    extended: true
+}))
+app.use(json())
 
 //Manejando rutas de la API
 app.use('/hangman', newGame)

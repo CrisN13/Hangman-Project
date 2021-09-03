@@ -1,7 +1,5 @@
 //Importando módulos a utilizar
 let { word, wordProgress } = require('../NewGame/NewGame.Controller')
-const readline = require('readline')
-const bodyparser = require('body-parser')
 
 let wordArr = new Array
 wordArr = word.split("")
@@ -10,8 +8,7 @@ let wordProgressArr = new Array
 //Método que captura una letra y evalua si la palabra genera al azar la posee o no
 exports.gLetter = (req, res) => {
     res.setHeader("Content-Type", "text/html")
-    let choseLetters = new Array
-    choseLetters = []
+    let choseLetters = []
     let attemps = 6
     
     while (attemps > 0) {
@@ -31,14 +28,17 @@ exports.gLetter = (req, res) => {
                         else if (wordArr[i] === letter.toLowerCase()) {
                             wordProgressArr = wordProgress.split("")
                             wordProgressArr[i + i] = letter
-                            wordProgress = wordProgressArr.join("")            
+                            wordProgress = wordProgressArr.join("")    
                             res.send("<p>" + wordProgress + "<br>Intentos restantes: " + attemps + "</p>")
+                            // if (i === (word.length - 1)) {
+                            //     res.send("<p>" + wordProgress + "<br>Intentos restantes: " + attemps + "</p>")
+                            //     attemps--
+                            // }  
                         }
                         else {
-                            break
+                            continue
                         }
                     }    
-                    attemps--
                     choseLetters.push(letter)
                 }
             } 

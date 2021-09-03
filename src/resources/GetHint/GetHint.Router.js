@@ -6,6 +6,6 @@ const { gHint } = require('./GetHint.Controller')
 const getHint = express.Router()
 
 //Configurando ruta de la API para brindar una pista cuando el usuario lo requiera
-getHint.post('/', gHint)
+getHint.get('/', gHint)
 
 exports.getHint = getHint

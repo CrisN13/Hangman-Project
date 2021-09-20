@@ -6,48 +6,56 @@ wordArr = word.split("")
 let wordProgressArr = new Array
 
 //Método que captura una letra y evalua si la palabra genera al azar la posee o no
-exports.gLetter = (req, res) => {
+exports.gLetter = (req, res, next) => {
     res.setHeader("Content-Type", "text/html")
     let choseLetters = []
     let attemps = 6
+    let letter
     
     while (attemps > 0) {
-        if (attemps > 0) {
-            let letter = req.body.letter
-            //Validando la letra ingresada
-            if (letter.length === 1 && letter.toLowerCase().charCodeAt(0) >= 97 && letter.toLowerCase().charCodeAt(0) <= 122) {
-                if (choseLetters.includes(letter)) {
-                    res.status(304).send("Status 304: No modificado")
-                } 
-                else {
-                    for (let i = 0; i < word.length; i++) {
-                        if (wordProgress.replace(" ", "") === word) {
-                            res.send("<b>¡Ganaste!</b>")
-                            res.end()
-                        }
-                        else if (wordArr[i] === letter.toLowerCase()) {
-                            wordProgressArr = wordProgress.split("")
-                            wordProgressArr[i + i] = letter
-                            wordProgress = wordProgressArr.join("")    
-                            res.send("<p>" + wordProgress + "<br>Intentos restantes: " + attemps + "</p>")
-                            // if (i === (word.length - 1)) {
-                            //     res.send("<p>" + wordProgress + "<br>Intentos restantes: " + attemps + "</p>")
-                            //     attemps--
-                            // }  
-                        }
-                        else {
-                            continue
-                        }
-                    }    
-                    choseLetters.push(letter)
+        letter = req.body.letter
+        //Validando la letra ingresada
+        if (letter.length === 1 && letter.toLowerCase().charCodeAt(0) >= 97 && letter.toLowerCase().charCodeAt(0) <= 122) {
+            //
+            if (choseLetters.includes(letter)) {
+                res.status(304)
+            } else if (word.includes(letter)) {
+                for (let i = 0; i < word.length; i++) {
+                    if (wordArr[i] === letter.toLowerCase()) {
+                        wordProgressArr = wordProgress.split("")
+                        wordProgressArr[i + i] = letter
+                        wordProgress = wordProgressArr.join("")   
+                        // if (i === (word.length - 1)) {
+                        //     res.send("<p>" + wordProgress + "<br>Intentos restantes: " + attemps + "</p>")
+                        //     attemps--
+                        // }  
+                    }
+                }    
+                choseLetters.push(letter)    
+
+                if (wordProgress.replace(/ /g, "") === word) {
+                    res.send("<p>" + wordProgress + "<br>Intentos restantes: " + attemps + "</p><b>¡Ganaste!</b>")
+                    res.end()
+                } else {
+                    res.send("<p>" + wordProgress + "<br>Intentos restantes: " + attemps + "</p>")
+                    next()
+                }   
+            } else {
+                --attemps
+                choseLetters.push(letter)    
+
+                if (attemps === 0) {
+                    res.send("Juego terminado. La respuesta correcta es: " + word)
+                    res.end()
+                } else {
+                    res.send("<p>" + wordProgress + "<br>Intentos restantes: " + attemps + "</p>")
+                    next()
                 }
-            } 
-            else {
-                res.send("<p>El valor ingresado no es válido. Inténtelo nuevamente.</p>")
-            }        
+            }
+            //
         } else {
-            res.send("Juego terminado. La respuesta correcta es: " + word)
-            res.end()          
-        }
+            res.send("<p>" + wordProgress + "<br>Intentos restantes: " + attemps + "</p>El valor ingresado no es válido. Inténtelo nuevamente.")
+            next()
+        }        
     }  
 }

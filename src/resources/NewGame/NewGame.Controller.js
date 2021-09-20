@@ -3,7 +3,7 @@ const fs = require('fs');
 
 //Método que obtiene una palabra al azar de la lista de palabras del archivo words.txt
 const getRandomWord = () => {
-    let data = fs.readFileSync('./words.txt', "utf8")
+    let data = fs.readFileSync('src/words.txt', "utf8")
     let wordList = data.split("\n")
     let numRandom = Math.floor(Math.random() * (wordList.length - 1))
     return wordList[numRandom]

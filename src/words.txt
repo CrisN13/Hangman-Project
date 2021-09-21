@@ -1,5 +1,4 @@
-casa
-cuchara      
+casa   
 papel
 celular
 escoba

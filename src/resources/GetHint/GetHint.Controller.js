@@ -18,5 +18,5 @@ module.exports.gHint = (req, res) => {
             }
         }
     }
-    res.send("La pista es: " + wordProgressArr)
+    res.send("<body bgcolor='slateblue' style='color: white'>La pista es: <b>" + wordProgressArr + "</b></body>")
 }

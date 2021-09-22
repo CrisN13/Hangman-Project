@@ -18,13 +18,16 @@ const hangmanWord = () => {
     return wProgress
 }
 
-let word = getRandomWord()
-let wordProgress = hangmanWord()
-
 //Método encargado de iniciar un nuevo juego
-module.exports.startGame = (req, res) => {
+exports.startGame = (req, res) => {
+    globalThis.word = getRandomWord()
+    globalThis.wordProgress = hangmanWord()
+
+    exports.word = word
+    exports.wordProgress = wordProgress
+    //word = this.word
+    //wordProgress = this.wordProgress
+
     res.send("<body bgcolor='slateblue' style='color: white'><p style='border:2px solid white; width: 130px; padding: 5px'>¡Adivina la palabra!</p><p>" + wordProgress + "</p></body>")
 }
 
-module.exports.word = word
-module.exports.wordProgress = wordProgress

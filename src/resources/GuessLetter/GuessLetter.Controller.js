@@ -1,13 +1,13 @@
 //Importando módulos a utilizar
-let { word, wordProgress } = require('../NewGame/NewGame.Controller')
+let newGame = require('../NewGame/NewGame.Controller')
 
-let wordArr = new Array
-wordArr = word.split("")
-let wordProgressArr = new Array
-let choseLetters = []
-let attemps = 6
+var wordArr = WordArr
+var wordProgressArr = WordProgressArr
+var choseLetters = ChoseLetters
+var attemps = Attemps
 
-const prueba = (req, res, next) => {
+
+const prueba = (req, res) => {
     let letter = req.body.letter
     //Validando la letra ingresada
     if (letter.length === 1 && letter.toLowerCase().charCodeAt(0) >= 97 && letter.toLowerCase().charCodeAt(0) <= 122) {
@@ -44,20 +44,27 @@ const prueba = (req, res, next) => {
         //Error
     } else {
         res.send("<body bgcolor='slateblue' style='color: white'><p>" + wordProgress + "<br>Intentos restantes: " + attemps + "</p>El valor ingresado no es válido. Inténtelo nuevamente.</body>")
-        next()
     }        
 }
 
 //Método que captura una letra y evalua si la palabra genera al azar la posee o no
-exports.gLetter = (req, res, next) => {
+exports.gLetter = (req, res) => {
     res.setHeader("Content-Type", "text/html")
     
+    let word = newGame.word
+    let wordProgress = newGame.wordProgress
+    globalThis.WordArr = new Array
+    WordArr = word.split("")
+    globalThis.WordProgressArr = new Array
+    globalThis.ChoseLetters = []
+    globalThis.Attemps = 6
+
     while (attemps > 0) {
-        return prueba(req, res, next)
+        return prueba(req, res)
     }  
 }
 
                     // if (i === (word.length - 1)) {
                     //     res.send("<p>" + wordProgress + "<br>Intentos restantes: " + attemps + "</p>")
                     //     attemps--
-                    // }  
+                    // }

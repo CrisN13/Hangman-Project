@@ -25,7 +25,6 @@ exports.start = () => {
     //Validando funcionamiento de la API
     try {
         app.listen("https://hangman-project-elaniin.herokuapp.com")
-        console.log('Connected to port 3000!')
     } catch (err) {
         console.error(err)
     }

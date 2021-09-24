@@ -70,17 +70,21 @@ exports.gLetter = (req, res) => {
     Attemps = newGame.attemps
     ChoseLetters = newGame.choseLetters
 
-     //Si el asuario adivina la palabra genera un mensaje confirmando que ganó y evita que se salga de
-     //el área de gane hasta que se genere un nuevo juego
-    if ((wordProgress.replace(/ /g, "")).trim() === word.trim()) {
-        res.send("<body bgcolor='slateblue' style='color: white'><p>" + wordProgress + "<br>Intentos restantes: " + attemps + "</p><b style='border:2px solid white; width: 130px; padding: 5px'>¡Ganaste!</b></body>")
-        res.end()
-    } else if (attemps === 0) {  //Si los intentos disponibles llegaran a 0, el juego termina y le dice al usuario la respuesta correcta.
-        res.send("<body bgcolor='slateblue' style='color: white'><p><b>Juego terminado.</b></p>La respuesta correcta es: <u>" + word + "</u></body>")
-        res.end()
-    } else { //Si el juego no ha terminado, ejecuta el while con la lógica del programa
-        while (attemps > 0) {
-            return Validar(req, res)
-        }      
+    try {
+        //Si el asuario adivina la palabra genera un mensaje confirmando que ganó y evita que se salga de
+        //el área de gane hasta que se genere un nuevo juego
+        if ((wordProgress.replace(/ /g, "")).trim() === word.trim()) {
+             res.send("<body bgcolor='slateblue' style='color: white'><p>" + wordProgress + "<br>Intentos restantes: " + attemps + "</p><b style='border:2px solid white; width: 130px; padding: 5px'>¡Ganaste!</b></body>")
+             res.end()
+        } else if (attemps === 0) {  //Si los intentos disponibles llegaran a 0, el juego termina y le dice al usuario la respuesta correcta.
+            res.send("<body bgcolor='slateblue' style='color: white'><p><b>Juego terminado.</b></p>La respuesta correcta es: <u>" + word + "</u></body>")
+            res.end()
+        } else { //Si el juego no ha terminado, ejecuta el while con la lógica del programa
+            while (attemps > 0) {
+                return Validar(req, res)
+            }      
+        }
+    } catch (err) {
+        res.status(404).send()
     }
 }

@@ -24,7 +24,7 @@ app.use('/hangman/hint', getHint)
 exports.start = () => {
     //Validando funcionamiento de la API
     try {
-        app.listen(3000)
+        app.listen("https://hangman-project-elaniin.herokuapp.com")
         console.log('Connected to port 3000!')
     } catch (err) {
         console.error(err)

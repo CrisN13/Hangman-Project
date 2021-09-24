@@ -8,4 +8,5 @@ const newGame = express.Router()
 //Configurando ruta de la API para iniciar el juego
 newGame.post('/', startGame)
 
+//Exportando ruta
 exports.newGame = newGame

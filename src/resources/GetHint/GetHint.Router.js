@@ -8,4 +8,5 @@ const getHint = express.Router()
 //Configurando ruta de la API para brindar una pista cuando el usuario lo requiera
 getHint.get('/', gHint)
 
+//Exportando ruta
 exports.getHint = getHint

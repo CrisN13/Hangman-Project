@@ -1,6 +1,12 @@
 //Importando módulos a utilizar
 const fs = require('fs');
 
+//Declaración de variables de proceso globales
+globalThis.word 
+globalThis.wordProgress
+globalThis.attemps
+globalThis.choseLetters
+
 //Método que obtiene una palabra al azar de la lista de palabras del archivo words.txt
 const getRandomWord = () => {
     let data = fs.readFileSync('src/words.txt', "utf8")
@@ -18,25 +24,20 @@ const hangmanWord = () => {
     return wProgress
 }
 
-globalThis.word 
-globalThis.wordProgress
-globalThis.attemps
-globalThis.choseLetters
-
 //Método encargado de iniciar un nuevo juego
 exports.startGame = (req, res) => {
+    //Asignación de valores a variables globales
     word = getRandomWord()
     wordProgress = hangmanWord()
     attemps = 6
     choseLetters = []
 
+    //Exportación de las variables
     exports.word = word
     exports.wordProgress = wordProgress
     exports.attemps = attemps
     exports.choseLetters = choseLetters
-    //word = this.word
-    //wordProgress = this.wordProgress
-
+    
     res.send("<body bgcolor='slateblue' style='color: white'><p style='border:2px solid white; width: 130px; padding: 5px'>¡Adivina la palabra!</p><p>" + wordProgress + "</p></body>")
 }
 

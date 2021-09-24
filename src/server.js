@@ -20,8 +20,9 @@ app.use('/hangman', guessLetter)
 app.use('/hangman', getSolution)
 app.use('/hangman/hint', getHint)
 
-//Métpdo que crea el servidor
+//Método que crea el servidor
 exports.start = () => {
+    //Validando funcionamiento de la API
     try {
         app.listen(3000)
         console.log('Connected to port 3000!')

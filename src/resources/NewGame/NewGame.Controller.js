@@ -18,13 +18,22 @@ const hangmanWord = () => {
     return wProgress
 }
 
+globalThis.word 
+globalThis.wordProgress
+globalThis.attemps
+globalThis.choseLetters
+
 //Método encargado de iniciar un nuevo juego
 exports.startGame = (req, res) => {
-    globalThis.word = getRandomWord()
-    globalThis.wordProgress = hangmanWord()
+    word = getRandomWord()
+    wordProgress = hangmanWord()
+    attemps = 6
+    choseLetters = []
 
     exports.word = word
     exports.wordProgress = wordProgress
+    exports.attemps = attemps
+    exports.choseLetters = choseLetters
     //word = this.word
     //wordProgress = this.wordProgress
 

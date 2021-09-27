@@ -4,7 +4,7 @@
 
 El siguiente proyecto consiste en el tan conocido juego llamado "Hangman", conocido en español como "Ahocarcado". Es una API la cual contiene las 4 funcionalidades básicas de dicho juego, las cuales se describiran a continuación:
 
-- [Crear un nuevo juego](#crear un nuevo juego)
+- [Crear un nuevo juego](#crearunnuevojuego)
 - [Adivinar una letra](#adivinarunaletra)
 - [Obtener la solución del juego](#obtenerlasolucióndeljuego)
 - [Obtener una pista](#obtenerunapista)

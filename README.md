@@ -15,7 +15,7 @@ El siguiente proyecto consiste en el tan conocido "Hangman", conocido en españo
 
 Para la creación de una nueva partida se debe utilizar el siguiente endpoint:
 
-`localhost:3000/hangman` con el método `Post`
+`https://hangman-project-elaniin.herokuapp.com/hangman` con el método `Post`
 
 ##
 ### Adivinar una letra
@@ -23,7 +23,7 @@ Para la creación de una nueva partida se debe utilizar el siguiente endpoint:
 
 Para la creación de una nueva partida se debe utilizar el siguiente endpoint:
 
-`localhost:3000/hangman` con el método `Put`
+`https://hangman-project-elaniin.herokuapp.com/hangman` con el método `Put`
 
 ##
 ### Obtener la solución del juego
@@ -31,7 +31,7 @@ Para la creación de una nueva partida se debe utilizar el siguiente endpoint:
 
 Para obtener la solución del juego se debe utilizar el siguiente endpoint:
 
-`localhost:3000/hangman` con el método `Get`
+`https://hangman-project-elaniin.herokuapp.com/hangman` con el método `Get`
 
 ##
 ### Obtener una pista
@@ -39,4 +39,4 @@ Para obtener la solución del juego se debe utilizar el siguiente endpoint:
 
 Para obtener una pista de la palabra se debe utilizar el siguiente endpoint:
 
-`localhost:3000/hangman/hint` con el método `Get`
+`https://hangman-project-elaniin.herokuapp.com/hangman/hint` con el método `Get`

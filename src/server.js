@@ -20,11 +20,13 @@ app.use('/hangman', guessLetter)
 app.use('/hangman', getSolution)
 app.use('/hangman/hint', getHint)
 
+const port = process.env.PORT || 3000
+
 //Método que crea el servidor
 exports.start = () => {
     //Validando funcionamiento de la API
     try {
-        app.listen("https://hangman-project-elaniin.herokuapp.com")
+        app.listen(port)
     } catch (err) {
         console.error(err)
     }

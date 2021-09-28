@@ -1,12 +1,12 @@
 //Importando módulos a utilizar
-let newGameRouter = require('../NewGame/NewGame.Controller')
+let newGameController = require('../NewGame/NewGame.Controller')
 
 
 //Método que muestra una pista de la palabra
 module.exports.GetHintController = (req, res) => {
     //Declarando variables de proceso
-    let word = newGameRouter.word
-    let wordProgress = newGameRouter.wordProgress
+    let word = newGameController.word
+    let wordProgress = newGameController.wordProgress
     let wordArray = new Array
     wordArray = word.split("")
     let letter = wordArray[0]

@@ -1,5 +1,5 @@
 //Importando módulos a utilizar
-let newGameRouter = require('../newGame/newGame.Controller')
+let newGameController = require('../NewGame/NewGame.Controller')
 
 //Declarando variables de proceso de manera global
 globalThis.word = ""
@@ -64,11 +64,11 @@ exports.GuessLetterController = (req, res) => {
     res.setHeader("Content-Type", "text/html")
     
     //Asignación de valores a las variables globales
-    word = newGameRouter.word
-    wordProgressHolder = newGameRouter.wordProgress
+    word = newGameController.word
+    wordProgressHolder = newGameController.wordProgress
     wordArray = word.split("")
-    attempsHolder = newGameRouter.attemps
-    choseLettersHolder = newGameRouter.choseLetters
+    attempsHolder = newGameController.attemps
+    choseLettersHolder = newGameController.choseLetters
 
     try {
         //Si el asuario adivina la palabra genera un mensaje confirmando que ganó y evita que se salga de
@@ -85,6 +85,7 @@ exports.GuessLetterController = (req, res) => {
             }      
         }
     } catch (error) {
+        console.log(error)
         res.status(404).send()
     }
 }

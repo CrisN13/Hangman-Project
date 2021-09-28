@@ -17,11 +17,12 @@ const GetRandomWord = () => {
 
 //Método que crea el número de espacios por cada letra de la palabra elegida al azar
 const HangmanWord = () => {
-    let wordProgress = ""
-    for (let i = 0; i < word.length; i++) {
-        wordProgress += "_ "
+    let wordProgressHolder = ""
+    let wordHolder = word.trim()
+    for (let i = 0; i < wordHolder.length; i++) {
+        wordProgressHolder += "_ "
     }
-    return wordProgress
+    return wordProgressHolder
 }
 
 //Método encargado de iniciar un nuevo juego

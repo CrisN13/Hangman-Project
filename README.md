@@ -8,6 +8,7 @@ El siguiente proyecto consiste en el tan conocido juego llamado "Hangman", conoc
 - [Adivinar una letra](#adivinar-una-letra)
 - [Obtener la solución del juego](#obtener-la-solución-del-juego)
 - [Obtener una pista](#obtener-una-pista)
+- [Colección de Postman](#colección-de-postman)
 
 ##
 ### Crear un nuevo juego
@@ -21,7 +22,7 @@ Para la creación de una nueva partida se debe utilizar el siguiente endpoint:
 ### Adivinar una letra
 ##
 
-Para la creación de una nueva partida se debe utilizar el siguiente endpoint:
+Para ingresar una letra se debe utilizar el siguiente endpoint:
 
 `https://hangman-project-elaniin.herokuapp.com/hangman` con el método `Put`
 
@@ -40,3 +41,11 @@ Para obtener la solución del juego se debe utilizar el siguiente endpoint:
 Para obtener una pista de la palabra se debe utilizar el siguiente endpoint:
 
 `https://hangman-project-elaniin.herokuapp.com/hangman/hint` con el método `Get`
+
+##
+### Colección de Postman
+##
+
+Con este link puede importar la colección generada. En ella encontrará los 4 endpoints mencionados anteriormente, y en el caso de `Adivinar una letra`, encontrará la llave(key) `letter` la cual tiene un valor(value) que deberá sustituir por la letra que desea probar.
+
+`https://www.getpostman.com/collections/f08aa9bcfbd656c39442`

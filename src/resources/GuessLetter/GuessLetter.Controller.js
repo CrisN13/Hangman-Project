@@ -1,20 +1,20 @@
 //Importando módulos a utilizar
-let newGame = require('../NewGame/NewGame.Controller')
+let newGameRouter = require('../newGame/newGame.Controller')
 
 //Declarando variables de proceso de manera global
 globalThis.word = ""
-globalThis.WordProgress
-globalThis.wordProgress = this.WordProgress
-globalThis.wordArr
-globalThis.wordProgressArr = this.WordProgress
-globalThis.ChoseLetters
-globalThis.choseLetters = this.ChoseLetters
-globalThis.Attemps
-globalThis.attemps = this.Attemps
+globalThis.wordProgressHolder
+globalThis.wordProgress = this.wordProgressHolder
+globalThis.wordArray
+globalThis.wordProgressArray = this.wordProgressHolder
+globalThis.choseLettersHolder
+globalThis.choseLetters = this.choseLettersHolder
+globalThis.attempsHolder
+globalThis.attemps = this.attempsHolder
 
 //Función encargada de validar los datos ingresados por el usuario de la API y determinar
 //la bifurcación que tendrá el código. En general contiene la lógica principal del juego
-const Validar = (req, res) => {
+const ValidateLetter = (req, res) => {
     //Capturando valor ingresado
     let letter = req.body.letter
     letter = letter.toLowerCase()
@@ -26,10 +26,10 @@ const Validar = (req, res) => {
         } else if (word.includes(letter)) {  //Verifica que la letra ingresada sea parte de la palabra generada al azar
             //Itera dentro de la palabra para sustituir todas las coincidencias
             for (let i = 0; i < word.length; i++) {
-                if (wordArr[i] === letter) {
-                    wordProgressArr = wordProgress.split("")
-                    wordProgressArr[i + i] = letter
-                    wordProgress = wordProgressArr.join("")   
+                if (wordArray[i] === letter) {
+                    wordProgressArray = wordProgress.split("")
+                    wordProgressArray[i + i] = letter
+                    wordProgress = wordProgressArray.join("")   
                 }
             }    
             choseLetters.push(letter)    
@@ -60,15 +60,15 @@ const Validar = (req, res) => {
 }
 
 //Método que captura una letra y evalua si la palabra generada al azar la posee o no
-exports.gLetter = (req, res) => {
+exports.GuessLetterController = (req, res) => {
     res.setHeader("Content-Type", "text/html")
     
     //Asignación de valores a las variables globales
-    word = newGame.word
-    WordProgress = newGame.wordProgress
-    wordArr = word.split("")
-    Attemps = newGame.attemps
-    ChoseLetters = newGame.choseLetters
+    word = newGameRouter.word
+    wordProgressHolder = newGameRouter.wordProgress
+    wordArray = word.split("")
+    attempsHolder = newGameRouter.attemps
+    choseLettersHolder = newGameRouter.choseLetters
 
     try {
         //Si el asuario adivina la palabra genera un mensaje confirmando que ganó y evita que se salga de
@@ -81,10 +81,10 @@ exports.gLetter = (req, res) => {
             res.end()
         } else { //Si el juego no ha terminado, ejecuta el while con la lógica del programa
             while (attemps > 0) {
-                return Validar(req, res)
+                return ValidateLetter(req, res)
             }      
         }
-    } catch (err) {
+    } catch (error) {
         res.status(404).send()
     }
 }

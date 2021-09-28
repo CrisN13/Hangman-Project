@@ -1,12 +1,12 @@
 //Importando módulos a utilizar
 const express =  require('express')
-const { gSolution } = require('./GetSolution.Controller')
+const { GuessWordSolutionController } = require('./GetSolution.Controller')
 
 //Creando un nuevo router
-const getSolution = express.Router()
+const getSolutionRouter = express.Router()
 
 //Configurando ruta de la API para brindar la solución al culminar el juego
-getSolution.get('/', gSolution)
+getSolutionRouter.get('/', GuessWordSolutionController)
 
 //Exportando ruta
-exports.getSolution = getSolution
+exports.getSolutionRouter = getSolutionRouter

@@ -1,10 +1,10 @@
 //Importando módulos a utilizar
 const express = require('express')
 const { json, urlencoded } = require('body-parser')
-const { newGame }= require('./resources/NewGame/NewGame.Router')
-const { guessLetter } = require('./resources/GuessLetter/GuessLetter.Router')
-const { getSolution } = require('./resources/GetSolution/GetSolution.Router')
-const { getHint } = require('./resources/GetHint/GetHint.Router')
+const { newGameRouter }= require('./resources/NewGame/NewGame.Router')
+const { guessLetterRouter } = require('./resources/GuessLetter/GuessLetter.Router')
+const { getSolutionRouter } = require('./resources/GetSolution/GetSolution.Router')
+const { getHintRouter } = require('./resources/GetHint/GetHint.Router')
 
 const app = express()
 
@@ -15,15 +15,15 @@ app.use(urlencoded({
 app.use(json())
 
 //Manejando rutas de la API
-app.use('/hangman', newGame)
-app.use('/hangman', guessLetter)
-app.use('/hangman', getSolution)
-app.use('/hangman/hint', getHint)
+app.use('/hangman', newGameRouter)
+app.use('/hangman', guessLetterRouter)
+app.use('/hangman', getSolutionRouter)
+app.use('/hangman/hint', getHintRouter)
 
 const port = process.env.PORT || 8080
 
 //Método que crea el servidor
-exports.start = () => {
+exports.Start = () => {
     //Validando funcionamiento de la API
     try {
         app.listen(port)

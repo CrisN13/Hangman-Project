@@ -1,9 +1,9 @@
 //Importando módulos a utilizar
-const newGame = require('../NewGame/NewGame.Controller')
+const newGameRouter = require('../NewGame/NewGame.Controller')
 
 //Método que muestra la solución del juego
-module.exports.gSolution = (req, res) => {
-    var Word =  newGame.word
+module.exports.GuessWordSolutionController = (req, res) => {
+    let word =  newGameRouter.word
 
-    res.send("<body bgcolor='slateblue' style='color: white'>La palabra correcta es: <b>" + Word + "</b></body>")
+    res.send("<body bgcolor='slateblue' style='color: white'>La palabra correcta es: <b>" + word + "</b></body>")
 }

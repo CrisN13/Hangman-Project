@@ -8,7 +8,7 @@ globalThis.attemps
 globalThis.choseLetters
 
 //Método que obtiene una palabra al azar de la lista de palabras del archivo words.txt
-const getRandomWord = () => {
+const GetRandomWord = () => {
     let data = fs.readFileSync('src/words.txt', "utf8")
     let wordList = data.split("\n")
     let numRandom = Math.floor(Math.random() * (wordList.length - 1))
@@ -16,19 +16,19 @@ const getRandomWord = () => {
 } 
 
 //Método que crea el número de espacios por cada letra de la palabra elegida al azar
-const hangmanWord = () => {
-    let wProgress = ""
+const HangmanWord = () => {
+    let wordProgress = ""
     for (let i = 0; i < word.length; i++) {
-        wProgress += "_ "
+        wordProgress += "_ "
     }
-    return wProgress
+    return wordProgress
 }
 
 //Método encargado de iniciar un nuevo juego
-exports.startGame = (req, res) => {
+exports.StartGameController = (req, res) => {
     //Asignación de valores a variables globales
-    word = getRandomWord()
-    wordProgress = hangmanWord()
+    word = GetRandomWord()
+    wordProgress = HangmanWord()
     attemps = 6
     choseLetters = []
 

@@ -46,6 +46,6 @@ Para obtener una pista de la palabra se debe utilizar el siguiente endpoint:
 ### Colección de Postman
 ##
 
-Con este link puede importar la colección generada. En ella encontrará los 4 endpoints mencionados anteriormente, y en el caso de `Adivinar una letra`, encontrará la llave(key) `letter` la cual tiene un valor(value) que deberá sustituir por la letra que desea probar.
+Con este link puede importar la colección generada por mi persona en Postman. En ella encontrará los 4 endpoints mencionados anteriormente, y en el caso de `Adivinar una letra`, encontrará la llave(key) `letter` la cual tiene un valor(value) que deberá sustituir por la letra que desea probar.
 
 `https://www.getpostman.com/collections/f08aa9bcfbd656c39442`

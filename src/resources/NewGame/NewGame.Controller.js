@@ -34,11 +34,11 @@ exports.StartGameController = (req, res) => {
     choseLetters = []
 
     //Exportación de las variables
-    exports.word = word
-    exports.wordProgress = wordProgress
-    exports.attemps = attemps
-    exports.choseLetters = choseLetters
+    module.exports.word = word
+    module.exports.wordProgress = wordProgress
+    module.exports.attemps = attemps
+    module.exports.choseLetters = choseLetters
     
-    res.send("<body bgcolor='slateblue' style='color: white'><p style='border:2px solid white; width: 130px; padding: 5px'>¡Adivina la palabra!</p><p>" + wordProgress + "</p></body>")
+    return res.send("<body bgcolor='slateblue' style='color: white'><p style='border:2px solid white; width: 130px; padding: 5px'>¡Adivina la palabra!</p><p>" + wordProgress + "</p></body>")
 }
 

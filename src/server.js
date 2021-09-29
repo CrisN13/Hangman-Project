@@ -20,13 +20,13 @@ app.use('/hangman', guessLetterRouter)
 app.use('/hangman', getSolutionRouter)
 app.use('/hangman/hint', getHintRouter)
 
-const port = process.env.PORT || 8080
+//const port = process.env.PORT || 8080
 
 //Método que crea el servidor
 exports.Start = () => {
     //Validando funcionamiento de la API
     try {
-        app.listen(port)
+        app.listen(3000)
     } catch (err) {
         console.error(err)
     }

@@ -1,12 +1,12 @@
 //Importando módulos a utilizar
-let dataGame = require('../Data/Game')
+let { GetWord, GetWordProgress } = require('../Data/Game')
 
 
 //Método que muestra una pista de la palabra
 module.exports.GetHintController = (req, res) => {
     //Declarando variables de proceso
-    let word = dataGame.word
-    let wordProgress = dataGame.wordProgress
+    let word = GetWord()
+    let wordProgress = GetWordProgress()
     let wordArray = new Array
     wordArray = word.split("")
     let letter = wordArray[0]

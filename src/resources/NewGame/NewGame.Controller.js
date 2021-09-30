@@ -25,6 +25,22 @@ const HangmanWord = () => {
     return wordProgressHolder
 }
 
+//Exportando métodos para obtener los datos a utilizar
+exports.GetWord = () => {
+    return word
+}
+
+exports.GetWordProgress = () => {
+    return wordProgress
+}
+
+exports.GetAttemps = () => {
+    return attemps
+}
+
+exports.GetChoseLetters = () => {
+    return choseLetters
+}
 //Método encargado de iniciar un nuevo juego
 exports.StartGameController = (req, res) => {
     //Asignación de valores a variables globales
@@ -33,12 +49,6 @@ exports.StartGameController = (req, res) => {
     attemps = 6
     choseLetters = []
 
-    //Exportación de las variables
-    module.exports.word = word
-    module.exports.wordProgress = wordProgress
-    module.exports.attemps = attemps
-    module.exports.choseLetters = choseLetters
-    
     return res.send("<body bgcolor='slateblue' style='color: white'><p style='border:2px solid white; width: 130px; padding: 5px'>¡Adivina la palabra!</p><p>" + wordProgress + "</p></body>")
 }
 
